@@ -20,6 +20,7 @@ router.get('/:id', (req, res) => {
       as: 'components',
       through: {
         model: RecipeComponentModel,
+        attributes: ["order"],
       },
       include: [
         {
@@ -33,6 +34,8 @@ router.get('/:id', (req, res) => {
       ]
     }
   }).then((recipe) => {
+    recipe.components.sort((a, b) => (a.RecipeComponent.order || 0) - (b.RecipeComponent.order || 0));
+    console.log(recipe);
     if (recipe) {
       res.status(200).json(recipe);
     } else {

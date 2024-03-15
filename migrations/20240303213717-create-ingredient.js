@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       quantity: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(5, 2)
       },
       unit: {
         type: Sequelize.STRING

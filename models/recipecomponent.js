@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   RecipeComponent.init({
     componentId: DataTypes.INTEGER,
-    recipeId: DataTypes.INTEGER
+    recipeId: DataTypes.INTEGER,
+    order: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'RecipeComponent',

@@ -16,7 +16,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   Ingredient.init({
     name: DataTypes.STRING,
-    quantity: DataTypes.DECIMAL,
+    quantity: {
+      type: DataTypes.DECIMAL(5, 2),
+      get() {
+        const value = this.getDataValue('quantity');
+        if (value !== null && value !== undefined) {
+          if (Number.isInteger(value)) {
+            return value.toString();
+          } else {
+            return parseFloat(value).toFixed(2).replace(/\.?0+$/, '');
+          }
+        }
+        return value;
+      }
+    },
     unit: DataTypes.STRING,
     componentId: DataTypes.INTEGER
   }, {

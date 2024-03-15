@@ -28,6 +28,9 @@ module.exports = {
           },
           key: 'id'
         }
+      },
+      order: {
+        type: Sequelize.INTEGER,
       }
     });
   },
